@@ -1,9 +1,7 @@
-const holidayData = require('./holiday.json')
-
+const schedule = require('./schedule');
 const utils = {
     
     sleep: (ms) => {
-        console.log('test');
         return new Promise((resolve) => {
             setTimeout(resolve, ms);
           });
@@ -15,12 +13,9 @@ const utils = {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
 
-    isHoliday: (date) => {
-        
-        for(let i = 0; i < holidayData.length; i++) {
-            let d = new Date(holidayData[i].date);
-            console.log(d);
-        }
+    getShedule: () => {
+        let now = new Date();
+        return schedule[now.getMonth()][now.getDate()];
     }
 }
 
